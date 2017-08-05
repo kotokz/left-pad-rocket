@@ -1,0 +1,14 @@
+[package]
+name = "left-pad-rocket"
+version = "0.1.0"
+authors = ["kotokz"]
+
+[dependencies]
+rocket = "*"
+rocket_codegen = "*"
+rocket_contrib = "*"
+serde = "*"
+serde_json = "*"
+serde_derive = "*"
+
+padme = {git = "https://github.com/archer884/padme.git"}
