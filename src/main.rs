@@ -7,6 +7,7 @@ extern crate rocket_contrib;
 #[macro_use] extern crate serde_derive;
 extern crate padme;
 
+#[cfg(test)] mod tests;
 mod handler;
 mod padding;
 mod params;

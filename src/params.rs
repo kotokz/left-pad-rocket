@@ -1,5 +1,3 @@
-use std::error::Error;
-use std::fmt;
 use padding::PaddingRequest;
 use rocket::http::RawStr;
 
@@ -17,24 +15,12 @@ pub enum ParamsError {
     LengthTooLong,
 }
 
-impl fmt::Display for ParamsError {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{:?}", self)
-    }
-}
-
-impl Error for ParamsError {
-    fn description(&self) -> &str {
-        match *self {
+impl<'a> ::std::convert::From<ParamsError> for &'a str {
+    fn from(err: ParamsError) -> &'a str {
+        match err {
             ParamsError::BadLength => "illegal content length",
             ParamsError::LengthTooLong => "illegal padding length",
         }
-    }
-}
-
-impl<'a> ::std::convert::From<ParamsError> for &'a str {
-    fn from(err: ParamsError) -> &'a str {
-        err.into()
     }
 }
 
