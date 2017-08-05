@@ -39,6 +39,6 @@ pub fn read_params(url: &PaddingRequestUrl) -> Result<PaddingRequest, ParamsErro
         match url.ch {
             Some(ref ch) => ch.chars().nth(0).unwrap_or(' '),
             None => ' ',
-        }
+        },
     ))
 }

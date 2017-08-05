@@ -35,7 +35,10 @@ pub struct PaddingResponse {
 pub fn left(params: &PaddingRequest) -> PaddingResponse {
     PaddingResponse {
         length: params.length,
-        padded: params.content.pad_left(params.length, params.padding_character),
+        padded: params.content.pad_left(
+            params.length,
+            params.padding_character,
+        ),
         original: params.content.to_owned(),
     }
 }
@@ -43,7 +46,10 @@ pub fn left(params: &PaddingRequest) -> PaddingResponse {
 pub fn right(params: &PaddingRequest) -> PaddingResponse {
     PaddingResponse {
         length: params.length,
-        padded: params.content.pad_right(params.length, params.padding_character),
+        padded: params.content.pad_right(
+            params.length,
+            params.padding_character,
+        ),
         original: params.content.to_owned(),
     }
 }

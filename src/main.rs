@@ -4,17 +4,18 @@
 extern crate rocket;
 extern crate serde_json;
 extern crate rocket_contrib;
-#[macro_use] extern crate serde_derive;
+#[macro_use]
+extern crate serde_derive;
 extern crate padme;
 
-#[cfg(test)] mod tests;
+#[cfg(test)]
+mod tests;
 mod handler;
 mod padding;
 mod params;
 
 fn rocket() -> rocket::Rocket {
-    rocket::ignite()
-        .mount("/", routes![handler::leftpad, handler::leftpad_right])
+    rocket::ignite().mount("/", routes![handler::leftpad, handler::leftpad_right])
 }
 
 fn main() {
