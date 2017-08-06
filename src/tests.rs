@@ -8,7 +8,7 @@ fn bad_leftpad_get() {
 
     // Try to get a message with an ID that doesn't exist.
     let mut res = client
-        .get("/leftpad?str=99")
+        .get("/api/leftpad?str=99")
         .header(ContentType::JSON)
         .dispatch();
     assert_eq!(res.status(), Status::NotFound);
@@ -18,7 +18,7 @@ fn bad_leftpad_get() {
     assert!(body.contains("The requested resource could not be found."));
 
     let mut res = client
-        .get("/leftpad?str=99&len=")
+        .get("/api/leftpad?str=99&len=")
         .header(ContentType::JSON)
         .dispatch();
     assert_eq!(res.status(), Status::NotFound);
@@ -28,7 +28,7 @@ fn bad_leftpad_get() {
     assert!(body.contains("The requested resource could not be found."));
 
     let mut res = client
-        .get("/leftpad?str=test&len=1000")
+        .get("/api/leftpad?str=test&len=1000")
         .header(ContentType::JSON)
         .dispatch();
     assert_eq!(res.status(), Status::Ok);
@@ -36,7 +36,7 @@ fn bad_leftpad_get() {
     assert!(body.contains("illegal padding length"));
 
     let mut res = client
-        .get("/leftpad?str=&len=1000")
+        .get("/api/leftpad?str=&len=1000")
         .header(ContentType::JSON)
         .dispatch();
     assert_eq!(res.status(), Status::Ok);
@@ -49,7 +49,7 @@ fn good_leftpad_get() {
     let client = Client::new(rocket()).unwrap();
 
     let mut res = client
-        .get("/leftpad?str=test&len=10")
+        .get("/api/leftpad?str=test&len=10")
         .header(ContentType::JSON)
         .dispatch();
     assert_eq!(res.status(), Status::Ok);
@@ -61,7 +61,7 @@ fn good_leftpad_get() {
 
 
     let mut res = client
-        .get("/leftpad?str=test&len=10&ch=1")
+        .get("/api/leftpad?str=test&len=10&ch=1")
         .header(ContentType::JSON)
         .dispatch();
     assert_eq!(res.status(), Status::Ok);
@@ -72,7 +72,7 @@ fn good_leftpad_get() {
     );
 
     let mut res = client
-        .get("/leftpad?str=test&len=10&ch=1111")
+        .get("/api/leftpad?str=test&len=10&ch=1111")
         .header(ContentType::JSON)
         .dispatch();
     assert_eq!(res.status(), Status::Ok);
@@ -90,7 +90,7 @@ fn bad_rightpad_get() {
 
     // Try to get a message with an ID that doesn't exist.
     let mut res = client
-        .get("/rightpad?str=99")
+        .get("/api/rightpad?str=99")
         .header(ContentType::JSON)
         .dispatch();
     assert_eq!(res.status(), Status::NotFound);
@@ -100,7 +100,7 @@ fn bad_rightpad_get() {
     assert!(body.contains("The requested resource could not be found."));
 
     let mut res = client
-        .get("/rightpad?str=99&len=")
+        .get("/api/rightpad?str=99&len=")
         .header(ContentType::JSON)
         .dispatch();
     assert_eq!(res.status(), Status::NotFound);
@@ -110,7 +110,7 @@ fn bad_rightpad_get() {
     assert!(body.contains("The requested resource could not be found."));
 
     let mut res = client
-        .get("/rightpad?str=test&len=1000")
+        .get("/api/rightpad?str=test&len=1000")
         .header(ContentType::JSON)
         .dispatch();
     assert_eq!(res.status(), Status::Ok);
@@ -118,7 +118,7 @@ fn bad_rightpad_get() {
     assert!(body.contains("illegal padding length"));
 
     let mut res = client
-        .get("/rightpad?str=&len=1000")
+        .get("/api/rightpad?str=&len=1000")
         .header(ContentType::JSON)
         .dispatch();
     assert_eq!(res.status(), Status::Ok);
@@ -132,7 +132,7 @@ fn good_rightpad_get() {
     let client = Client::new(rocket()).unwrap();
 
     let mut res = client
-        .get("/rightpad?str=test&len=10")
+        .get("/api/rightpad?str=test&len=10")
         .header(ContentType::JSON)
         .dispatch();
     assert_eq!(res.status(), Status::Ok);
@@ -143,7 +143,7 @@ fn good_rightpad_get() {
     );
 
     let mut res = client
-        .get("/rightpad?str=test&len=10&ch=1")
+        .get("/api/rightpad?str=test&len=10&ch=1")
         .header(ContentType::JSON)
         .dispatch();
     assert_eq!(res.status(), Status::Ok);
@@ -154,7 +154,7 @@ fn good_rightpad_get() {
     );
 
     let mut res = client
-        .get("/rightpad?str=test&len=10&ch=1111")
+        .get("/api/rightpad?str=test&len=10&ch=1111")
         .header(ContentType::JSON)
         .dispatch();
     assert_eq!(res.status(), Status::Ok);

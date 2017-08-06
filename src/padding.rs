@@ -22,16 +22,6 @@ pub struct PaddingResponse {
     length: usize,
 }
 
-// impl PaddingResponse {
-//     pub fn new(original: String, padded: String, length: usize) -> PaddingResponse {
-//         PaddingResponse {
-//             original: original,
-//             padded: padded,
-//             length: length,
-//         }
-//     }
-// }
-
 pub fn left(params: &PaddingRequest) -> PaddingResponse {
     PaddingResponse {
         length: params.length,

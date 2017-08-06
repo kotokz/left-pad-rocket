@@ -15,7 +15,7 @@ mod padding;
 mod params;
 
 fn rocket() -> rocket::Rocket {
-    rocket::ignite().mount("/", routes![handler::leftpad, handler::leftpad_right])
+    rocket::ignite().mount("/api/", routes![handler::leftpad, handler::leftpad_right])
 }
 
 fn main() {
